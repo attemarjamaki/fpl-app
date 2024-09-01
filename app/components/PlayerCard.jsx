@@ -10,10 +10,14 @@ const PlayerCard = ({ player }) => {
       case 3: // Midfielders
         return `row-start-3 col-start-${index + 1}`;
       case 4: // Forwards
-        return `row-start-4 col-start-${index + 2}`;
+        return `row-start-4 col-start-${index + 2}`; // Adjust based on number of forwards
       default:
         return "";
     }
+  };
+
+  const getShirtImage = (teamId) => {
+    return `/shirts/shirt_${teamId}.png`; // Match the naming convention you used
   };
 
   return (
@@ -22,17 +26,34 @@ const PlayerCard = ({ player }) => {
       className={`${getPositionClasses(
         player.position,
         player.index
-      )} player-card text-center p-2 rounded-lg w-24`}
+      )} player-card text-center rounded-lg`}
     >
-      <div className="bg-black bg-opacity-70 p-4 rounded-lg">
-        <h4 className="text-lg font-semibold text-white">{player.name}</h4>
-        <p className="text-sm text-white">{player.points} pts</p>
+      <div className="relative bg-black bg-opacity-50 rounded-lg h-36 w-28">
         {player.isCaptain && (
-          <span className="text-yellow-400 text-sm font-bold">C</span>
+          <span className="absolute top-12 left-1 text-white text-xl font-bold bg-black rounded-full px-2">
+            C
+          </span>
         )}
         {player.isViceCaptain && (
-          <span className="text-yellow-400 text-sm font-bold">VC</span>
+          <span className="absolute top-12 left-1 text-white text-xl font-bold bg-black rounded-full px-2">
+            V
+          </span>
         )}
+        <img
+          src={getShirtImage(player.team)} // Dynamically load the image based on team ID
+          alt={`${player.name} shirt`}
+          className="mx-auto mb-2 pt-2"
+          style={{ width: "55px" }} // Adjust the size as needed
+        />
+
+        <div className="bg-black">
+          <h4 className="text-lg font-semibold text-white">
+            {player.name.slice(0, 10)}
+          </h4>
+        </div>
+        <div>
+          <p className="text-lg font-semibold text-white">{player.points}</p>
+        </div>
       </div>
     </div>
   );

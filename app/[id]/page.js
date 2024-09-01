@@ -17,7 +17,6 @@ const ManagerPage = ({ params }) => {
 
         // Store the response data in state
         setManagerData(response.data);
-        console.log("Fetched Manager Data:", response.data);
       } catch (err) {
         console.error("Error fetching manager data:", err);
         setError(err.response?.data?.error || "Failed to fetch manager data");
@@ -54,22 +53,55 @@ const ManagerPage = ({ params }) => {
           </h3>
         </div>
         <div className="divider"></div>
-        <div className="card bg-base-300 rounded-box p-8">
-          {/* Starting XI Grid */}
-          <div className="grid grid-cols-3 grid-rows-4 gap-4 place-items-center">
-            {startingPlayers.map((player, index) => (
-              <PlayerCard key={player.id} player={{ ...player, index }} />
-            ))}
+        <div className="card rounded-box px-2 bg-[url('/images/pitch.svg')] bg-no-repeat bg-center bg-cover">
+          {/* Starting XI Layout with Grouped Rows */}
+          <div className="mt-4 space-y-4">
+            {/* Goalkeeper */}
+            <div className="flex justify-center">
+              {startingPlayers
+                .filter((player) => player.position === 1)
+                .map((player) => (
+                  <PlayerCard key={player.id} player={player} />
+                ))}
+            </div>
+
+            {/* Defenders */}
+            <div className="flex justify-around gap-2">
+              {startingPlayers
+                .filter((player) => player.position === 2)
+                .map((player) => (
+                  <PlayerCard key={player.id} player={player} />
+                ))}
+            </div>
+
+            {/* Midfielders */}
+            <div className="flex justify-around gap-2">
+              {startingPlayers
+                .filter((player) => player.position === 3)
+                .map((player) => (
+                  <PlayerCard key={player.id} player={player} />
+                ))}
+            </div>
+
+            {/* Forwards */}
+            <div className="flex justify-around gap-2">
+              {startingPlayers
+                .filter((player) => player.position === 4)
+                .map((player) => (
+                  <PlayerCard key={player.id} player={player} />
+                ))}
+            </div>
           </div>
 
-          {/* Bench Players Row */}
-          {benchPlayers.length > 0 && (
-            <div className="mt-8 grid grid-cols-4 gap-4 place-items-center">
-              {benchPlayers.map((player, index) => (
-                <PlayerCard key={player.id} player={{ ...player, index }} />
-              ))}
-            </div>
-          )}
+          <div className="bg-green-400 mt-8 p-4">
+            {benchPlayers.length > 0 && (
+              <div className="flex justify-between place-items-center">
+                {benchPlayers.map((player) => (
+                  <PlayerCard key={player.id} player={player} />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
