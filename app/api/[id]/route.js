@@ -41,7 +41,7 @@ export async function GET(request, { params }) {
     const liveData = liveResponse.data.elements;
 
     // Calculate the total points based on picks and live data
-    let totalPoints = 0;
+    let livePoints = 0;
     picks.forEach((pick) => {
       const playerLiveData = liveData.find(
         (player) => player.id === pick.element
@@ -50,9 +50,9 @@ export async function GET(request, { params }) {
 
       // Add the player's points to the total
       if (pick.is_captain) {
-        totalPoints += playerPoints * 2; // Double points for captain
+        livePoints += playerPoints * 2; // Double points for captain
       } else {
-        totalPoints += playerPoints;
+        livePoints += playerPoints;
       }
     });
 
@@ -60,7 +60,7 @@ export async function GET(request, { params }) {
     const responseData = {
       managerName: `${managerData.player_first_name} ${managerData.player_last_name}`,
       teamName: managerData.name,
-      totalPoints: totalPoints,
+      livePoints: livePoints,
     };
 
     // Send back the processed data, including manager's name, team name, and points

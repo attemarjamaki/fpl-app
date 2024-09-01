@@ -36,7 +36,7 @@ const ManagerPage = ({ params }) => {
         <div className="card bg-base-300 rounded-box grid p-8 place-items-center">
           <h1>Manager: {managerData.managerName}</h1>
           <h2>Team: {managerData.teamName}</h2>
-          <h3>Live Points: {managerData.totalPoints}</h3>
+          <h3>Live Points: {managerData.livePoints}</h3>
         </div>
       </div>
     </div>
