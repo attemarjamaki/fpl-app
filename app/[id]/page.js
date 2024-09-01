@@ -33,10 +33,14 @@ const ManagerPage = ({ params }) => {
   return (
     <div>
       <div className="flex w-full flex-col">
-        <div className="card bg-base-300 rounded-box grid p-8 place-items-center">
+        <div className="card bg-base-300 rounded-box grid p-8 place-items-center text-xl font-semibold">
           <h1>Manager: {managerData.managerName}</h1>
           <h2>Team: {managerData.teamName}</h2>
           <h3>Live Points: {managerData.livePoints}</h3>
+          <h3>Overall Points: {managerData.overallPoints}</h3>
+          <h3>
+            Overall Rank: {managerData.overallRank.toLocaleString("en-US")}
+          </h3>
         </div>
       </div>
     </div>

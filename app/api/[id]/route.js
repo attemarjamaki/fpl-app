@@ -60,6 +60,8 @@ export async function GET(request, { params }) {
     const responseData = {
       managerName: `${managerData.player_first_name} ${managerData.player_last_name}`,
       teamName: managerData.name,
+      overallPoints: managerData.summary_overall_points,
+      overallRank: managerData.summary_overall_rank,
       livePoints: livePoints,
     };
 
