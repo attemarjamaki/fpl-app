@@ -19,10 +19,14 @@ const ManagerCard = ({ managerData }) => {
   }
   console.log(rankChangeIndicator); // Debugging line
   return (
-    <div>
-      <div>
-        <h2>{managerData.managerName}</h2>
-        <h2>{managerData.currentGameweek}</h2>
+    <div className="mt-4">
+      <div className="bg-neutral-700 py-4">
+        <h2 className="text-white font-bold text-3xl ml-8">
+          {managerData.managerName}
+        </h2>
+        <h2 className="text-white text-3xl ml-8 mt-1">
+          GW {managerData.currentGameweek}
+        </h2>
       </div>
       <div className="stats flex w-full">
         <div className="stat flex-1 text-center flex flex-col items-center justify-center">

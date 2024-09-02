@@ -29,7 +29,12 @@ const ManagerPage = ({ params }) => {
     fetchManagerData();
   }, [params.id]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div>
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
   if (error) return <div>Error: {error}</div>;
 
   if (!managerData || !managerData.players) {
@@ -43,19 +48,7 @@ const ManagerPage = ({ params }) => {
   return (
     <div>
       <div className="flex w-full flex-col">
-        {/* Manager Info */}
-        <div className="card bg-base-300 rounded-box grid p-8 place-items-center text-xl font-semibold">
-          <h1>Manager: {managerData.managerName}</h1>
-          <h2>Team: {managerData.teamName}</h2>
-          <h3>Live Points: {managerData.livePoints}</h3>
-          <h3>Overall Points: {managerData.overallPoints}</h3>
-          <h3>
-            Overall Rank: {managerData.overallRank.toLocaleString("en-US")}
-          </h3>
-        </div>
-        <div className="divider"></div>
         <ManagerCard managerData={managerData} />
-        <div className="divider"></div>
         <div className="card rounded-box px-2 bg-[url('/images/pitch.svg')] bg-no-repeat bg-center bg-cover min-w-[600px]">
           {/* Starting XI Layout with Grouped Rows */}
           <div className="mt-4 space-y-4">
