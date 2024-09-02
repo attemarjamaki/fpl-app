@@ -28,7 +28,7 @@ const PlayerCard = ({ player }) => {
         player.index
       )} player-card text-center rounded-lg`}
     >
-      <div className="relative bg-black bg-opacity-50 rounded-lg h-36 w-28">
+      <div className="relative bg-black bg-opacity-50 rounded-lg h-34 w-28">
         {player.isCaptain && (
           <span className="absolute top-8 left-1 text-white text-xl font-bold bg-black rounded-full px-2">
             C
@@ -55,7 +55,7 @@ const PlayerCard = ({ player }) => {
           <p className="text-md font-semibold text-white">{player.points}</p>
         </div>
         <div>
-          <p className=" bg-slate-100 text-md text-black rounded-b-lg p-1">
+          <p className=" bg-slate-100 text-md text-black rounded-b-lg">
             {player.selectedPercent}%
           </p>
         </div>

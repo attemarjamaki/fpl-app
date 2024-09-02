@@ -21,10 +21,32 @@ export async function GET(request, { params }) {
     }
 
     const currentGameweek = currentEvent.id;
+    const averageEntryScore = currentEvent.average_entry_score;
 
+    // Fetch manager data
     const managerResponse = await axios.get(
       `https://fantasy.premierleague.com/api/entry/${id}/`
     );
+
+    const managerData = managerResponse.data;
+
+    // Find the overall league by its ID (314)
+    const overallLeague = managerData.leagues.classic.find(
+      (league) => league.id === 314
+    );
+
+    if (!overallLeague) {
+      return new Response(
+        JSON.stringify({ error: "Overall league not found" }),
+        {
+          status: 404,
+        }
+      );
+    }
+
+    // Extract current and last week's rank from the overall league
+    const currentRank = overallLeague.entry_rank;
+    const lastRank = overallLeague.entry_last_rank;
 
     const picksResponse = await axios.get(
       `https://fantasy.premierleague.com/api/entry/${id}/event/${currentGameweek}/picks/`
@@ -33,10 +55,12 @@ export async function GET(request, { params }) {
       `https://fantasy.premierleague.com/api/event/${currentGameweek}/live/`
     );
 
-    const managerData = managerResponse.data;
+    // const managerData = managerResponse.data;
     const picks = picksResponse.data.picks;
     const liveData = liveResponse.data.elements;
     const playerDetails = bootstrapResponse.data.elements; // Add this line
+
+    console.log(managerData.leagues.classic);
 
     let livePoints = 0;
     const players = picks.map((pick) => {
@@ -65,13 +89,30 @@ export async function GET(request, { params }) {
       };
     });
 
+    // Compare current rank with last week's rank
+    let rankChangeIndicator = "same";
+    if (currentRank < lastRank) {
+      rankChangeIndicator = "up"; // Rank improved (lower rank number)
+    } else if (currentRank > lastRank) {
+      rankChangeIndicator = "down"; // Rank worsened (higher rank number)
+    }
+
+    console.log("Current Rank:", currentRank);
+    console.log("Last Rank:", lastRank);
+    console.log("Rank Change Indicator:", rankChangeIndicator);
+    console.log(managerData.data);
+
     const responseData = {
       managerName: `${managerData.player_first_name} ${managerData.player_last_name}`,
       teamName: managerData.name,
       overallPoints: managerData.summary_overall_points,
       overallRank: managerData.summary_overall_rank,
+      lastRank: lastRank,
+      rankChangeIndicator: rankChangeIndicator,
       livePoints: livePoints,
       players: players, // Include players data
+      averageScore: averageEntryScore,
+      currentGameweek: currentGameweek,
     };
 
     return new Response(JSON.stringify(responseData), {

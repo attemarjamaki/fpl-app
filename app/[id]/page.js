@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PlayerCard from "../components/PlayerCard";
+import ManagerCard from "../components/ManagerCard";
 
 const ManagerPage = ({ params }) => {
   const [managerData, setManagerData] = useState(null);
@@ -53,7 +54,9 @@ const ManagerPage = ({ params }) => {
           </h3>
         </div>
         <div className="divider"></div>
-        <div className="card rounded-box px-2 bg-[url('/images/pitch.svg')] bg-no-repeat bg-center bg-cover">
+        <ManagerCard managerData={managerData} />
+        <div className="divider"></div>
+        <div className="card rounded-box px-2 bg-[url('/images/pitch.svg')] bg-no-repeat bg-center bg-cover min-w-[600px]">
           {/* Starting XI Layout with Grouped Rows */}
           <div className="mt-4 space-y-4">
             {/* Goalkeeper */}
