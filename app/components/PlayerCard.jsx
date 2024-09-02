@@ -30,12 +30,12 @@ const PlayerCard = ({ player }) => {
     >
       <div className="relative bg-black bg-opacity-50 rounded-lg h-36 w-28">
         {player.isCaptain && (
-          <span className="absolute top-12 left-1 text-white text-xl font-bold bg-black rounded-full px-2">
+          <span className="absolute top-8 left-1 text-white text-xl font-bold bg-black rounded-full px-2">
             C
           </span>
         )}
         {player.isViceCaptain && (
-          <span className="absolute top-12 left-1 text-white text-xl font-bold bg-black rounded-full px-2">
+          <span className="absolute top-8 left-1 text-white text-xl font-bold bg-black rounded-full px-2">
             V
           </span>
         )}
@@ -46,13 +46,18 @@ const PlayerCard = ({ player }) => {
           style={{ width: "55px" }} // Adjust the size as needed
         />
 
-        <div className="bg-black">
+        <div className="absolute bg-black w-full -mt-6">
           <h4 className="text-lg font-semibold text-white">
             {player.name.slice(0, 10)}
           </h4>
         </div>
+        <div className="mt-3">
+          <p className="text-md font-semibold text-white">{player.points}</p>
+        </div>
         <div>
-          <p className="text-lg font-semibold text-white">{player.points}</p>
+          <p className=" bg-slate-100 text-md text-black rounded-b-lg p-1">
+            {player.selectedPercent}%
+          </p>
         </div>
       </div>
     </div>

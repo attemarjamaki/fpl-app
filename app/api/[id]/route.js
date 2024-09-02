@@ -58,6 +58,7 @@ export async function GET(request, { params }) {
         position: playerInfo.element_type, // Position (1: GKP, 2: DEF, 3: MID, 4: FWD)
         name: playerInfo.web_name, // Player's name
         team: playerInfo.team, // Team ID
+        selectedPercent: playerInfo.selected_by_percent,
         points: playerPoints,
         isCaptain: pick.is_captain,
         isViceCaptain: pick.is_vice_captain,
