@@ -60,8 +60,6 @@ export async function GET(request, { params }) {
     const liveData = liveResponse.data.elements;
     const playerDetails = bootstrapResponse.data.elements; // Add this line
 
-    console.log(managerData.leagues.classic);
-
     let livePoints = 0;
     const players = picks.map((pick) => {
       const playerLiveData = liveData.find(
@@ -97,11 +95,6 @@ export async function GET(request, { params }) {
       rankChangeIndicator = "down"; // Rank worsened (higher rank number)
     }
 
-    console.log("Current Rank:", currentRank);
-    console.log("Last Rank:", lastRank);
-    console.log("Rank Change Indicator:", rankChangeIndicator);
-    console.log(managerData.data);
-
     const responseData = {
       managerName: `${managerData.player_first_name} ${managerData.player_last_name}`,
       teamName: managerData.name,
@@ -109,6 +102,7 @@ export async function GET(request, { params }) {
       overallRank: managerData.summary_overall_rank,
       lastRank: lastRank,
       rankChangeIndicator: rankChangeIndicator,
+      gameweekRank: managerData.summary_event_rank,
       livePoints: livePoints,
       players: players, // Include players data
       averageScore: averageEntryScore,

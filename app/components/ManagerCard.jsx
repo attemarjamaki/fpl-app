@@ -3,12 +3,11 @@ import Image from "next/image";
 
 const ManagerCard = ({ managerData }) => {
   if (!managerData) {
-    return <div>Loading...</div>; // Or any fallback UI
+    return <div>Loading...</div>;
   }
 
   const { currentRank, lastRank, rankChangeIndicator } = managerData;
 
-  // Determine the image to display based on the rank change indicator
   let rankChangeImage;
   if (rankChangeIndicator === "up") {
     rankChangeImage = "/images/up.png";
@@ -17,7 +16,6 @@ const ManagerCard = ({ managerData }) => {
   } else {
     rankChangeImage = "/images/same.png";
   }
-  console.log(rankChangeIndicator); // Debugging line
   return (
     <div className="mt-4">
       <div className="bg-neutral-700 py-4">
