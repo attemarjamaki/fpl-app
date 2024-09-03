@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PlayerCard from "../components/PlayerCard";
 import ManagerCard from "../components/ManagerCard";
+import Fixtures from "../components/Fixtures";
 
 const ManagerPage = ({ params }) => {
   const [managerData, setManagerData] = useState(null);
@@ -150,6 +151,9 @@ const ManagerPage = ({ params }) => {
               </p>
             </div>
           </div>
+        </div>
+        <div className="card rounded-box min-w-[600px] mt-10">
+          <Fixtures managerData={managerData} />
         </div>
       </div>
     </div>
