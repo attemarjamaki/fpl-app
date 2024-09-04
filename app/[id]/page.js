@@ -152,7 +152,7 @@ const ManagerPage = ({ params }) => {
             </div>
           </div>
         </div>
-        <div className="card rounded-box min-w-[600px] mt-10">
+        <div className="card rounded-box min-w-[600px] mt-10 mb-10">
           <Fixtures managerData={managerData} />
         </div>
       </div>

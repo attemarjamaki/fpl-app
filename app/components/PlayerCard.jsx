@@ -17,7 +17,7 @@ const PlayerCard = ({ player }) => {
   };
 
   const getShirtImage = (teamId) => {
-    return `/shirts/shirt_${teamId}.png`; // Match the naming convention you used
+    return `/images/shirts/shirt_${teamId}.png`; // Match the naming convention you used
   };
 
   return (
