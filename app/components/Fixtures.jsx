@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const Fixtures = ({ managerData }) => {
   const [players, setPlayers] = useState({});
@@ -88,11 +89,12 @@ const Fixtures = ({ managerData }) => {
               <p className="text-xl font-bold my-auto ml-auto">
                 {teamNames[fixture.team_h]}
               </p>
-              <img
+              <Image
                 src={getLogoImage(fixture.team_h)}
                 alt={`${fixture.team_h} logo`}
-                style={{ width: "52px" }}
-                className="ml-4"
+                width={52}
+                height={52}
+                className="ml-4 !h-[52px]"
               />
             </div>
             <div className="mt-2 mb-4">
@@ -162,11 +164,12 @@ const Fixtures = ({ managerData }) => {
 
           <div className="flex-1">
             <div className="flex">
-              <img
+              <Image
                 src={getLogoImage(fixture.team_a)}
                 alt={`${fixture.team_a} logo`}
-                style={{ width: "52px" }}
-                className="mr-4"
+                width={52}
+                height={52}
+                className="mr-4 !h-[52px]"
               />
               <p className="text-xl font-bold my-auto">
                 {teamNames[fixture.team_a]}
