@@ -33,6 +33,7 @@ export async function GET(request) {
       return {
         id: fixture.id,
         kickoff_time: fixture.kickoff_time,
+        minutes: fixture.minutes,
         team_h: fixture.team_h,
         team_h_score: fixture.team_h_score,
         team_a: fixture.team_a,

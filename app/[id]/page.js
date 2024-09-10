@@ -32,7 +32,7 @@ const ManagerPage = ({ params }) => {
 
   if (loading)
     return (
-      <div>
+      <div className="mt-20">
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -51,7 +51,7 @@ const ManagerPage = ({ params }) => {
 
   return (
     <div>
-      <div className="flex w-full flex-col">
+      <div className="flex w-full flex-col xl:flex-row">
         <div className="card rounded-box min-w-[600px]">
           <ManagerCard managerData={managerData} />
           {/* Starting XI Layout with Grouped Rows */}
@@ -102,57 +102,60 @@ const ManagerPage = ({ params }) => {
               )}
             </div>
           </div>
-        </div>
-        <div className="card rounded-box min-w-[600px] mt-10">
-          <div className="bg-neutral-700 py-4">
-            <h2 className="text-white font-bold text-3xl ml-8">Rank Details</h2>
-          </div>
-          <div className="flex w-full p-2">
-            <div className="flex-1 ml-1 text-2xl font-bold">
-              <p className="flex w-4/5 justify-between p-1">
-                Points{" "}
-                <span className="text-primary">{managerData.livePoints}</span>
-              </p>
-              <p className="flex w-4/5 justify-between p-1">
-                Total{" "}
-                <span className="text-primary">
-                  {managerData.overallPoints}
-                </span>
-              </p>
+          <div className="card rounded-box min-w-[600px] mt-10">
+            <div className="bg-neutral-700 py-4">
+              <h2 className="text-white font-bold text-3xl ml-8">
+                Rank Details
+              </h2>
             </div>
-            <div className="flex-1 ml-1 text-2xl font-bold">
-              <p className="flex w-full justify-between p-1">
-                GW Rank{" "}
-                <span className="text-primary">
-                  {managerData.gameweekRank.toLocaleString("en-US")}
-                </span>
-              </p>
-              <p className="flex w-full justify-between p-1">
-                New{" "}
-                <span className="text-primary">
-                  {managerData.overallRank.toLocaleString("en-US")}
-                </span>
-              </p>
-              <p className="flex w-full justify-between p-1">
-                Old Rank{" "}
-                <span className="text-primary">
-                  {managerData.lastRank.toLocaleString("en-US")}
-                </span>
-              </p>
-              <p className="flex w-full justify-between p-1">
-                Change
-                <span
-                  className={
-                    percentageChange >= 0 ? "text-green-500" : "text-red-500"
-                  }
-                >
-                  {percentageChange.toFixed(2) + " %"}
-                </span>
-              </p>
+            <div className="flex w-full p-2">
+              <div className="flex-1 ml-1 text-2xl font-bold">
+                <p className="flex w-4/5 justify-between p-1">
+                  Points{" "}
+                  <span className="text-primary">{managerData.livePoints}</span>
+                </p>
+                <p className="flex w-4/5 justify-between p-1">
+                  Total{" "}
+                  <span className="text-primary">
+                    {managerData.overallPoints}
+                  </span>
+                </p>
+              </div>
+              <div className="flex-1 ml-1 text-2xl font-bold">
+                <p className="flex w-full justify-between p-1">
+                  GW Rank{" "}
+                  <span className="text-primary">
+                    {managerData.gameweekRank.toLocaleString("en-US")}
+                  </span>
+                </p>
+                <p className="flex w-full justify-between p-1">
+                  New{" "}
+                  <span className="text-primary">
+                    {managerData.overallRank.toLocaleString("en-US")}
+                  </span>
+                </p>
+                <p className="flex w-full justify-between p-1">
+                  Old Rank{" "}
+                  <span className="text-primary">
+                    {managerData.lastRank.toLocaleString("en-US")}
+                  </span>
+                </p>
+                <p className="flex w-full justify-between p-1">
+                  Change
+                  <span
+                    className={
+                      percentageChange >= 0 ? "text-green-500" : "text-red-500"
+                    }
+                  >
+                    {percentageChange.toFixed(2) + " %"}
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div className="card rounded-box min-w-[600px] mt-10 mb-10">
+        <div className="lg:divider-horizontal"></div>
+        <div className="card rounded-box min-w-[600px] mt-4 mb-10">
           <Fixtures managerData={managerData} />
         </div>
       </div>

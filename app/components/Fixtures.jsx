@@ -58,7 +58,7 @@ const Fixtures = ({ managerData }) => {
     fetchPlayers();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div> </div>;
   if (error) return <div>Error: {error}</div>;
 
   const getPlayerName = (id) => {
@@ -72,7 +72,7 @@ const Fixtures = ({ managerData }) => {
 
   return (
     <>
-      <div className="mt-10">
+      <div>
         <div className="bg-neutral-700 py-4">
           <h2 className="text-white font-bold text-3xl ml-8">
             Gameweek {managerData.currentGameweek} Fixtures
@@ -163,7 +163,17 @@ const Fixtures = ({ managerData }) => {
             </div>
             <div className="flex flex-col items-center mx-4">
               <div className="text-xl font-bold mt-4">
-                {fixture.team_h_score} - {fixture.team_a_score}
+                {fixture.minutes > 0 ? (
+                  <p>
+                    {fixture.team_h_score} - {fixture.team_a_score}
+                  </p>
+                ) : (
+                  new Date(fixture.kickoff_time).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: false,
+                  })
+                )}
               </div>
               <div className="border-l border-neutral-700 h-4/5 my-2"></div>
             </div>
