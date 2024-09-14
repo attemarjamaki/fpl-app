@@ -114,7 +114,7 @@ export async function GET(request, { params }) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    console.error("Error fetching live points:", error);
+    // console.error("Error fetching live points:", error);
     return new Response(
       JSON.stringify({ error: "Failed to fetch live points" }),
       {

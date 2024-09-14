@@ -36,7 +36,13 @@ const ManagerPage = ({ params }) => {
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
-  if (error) return <div>Error: {error}</div>;
+  if (error)
+    return (
+      <div className="text-center mt-10 text-xl font-semibold">
+        Did you captain the right player? Time to find out… but first, the game
+        is updating! <br></br> Hold your breath, we’ll be back soon! 😅⚽
+      </div>
+    );
 
   if (!managerData || !managerData.players) {
     return <div>No player data available</div>;
