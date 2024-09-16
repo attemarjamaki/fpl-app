@@ -57,7 +57,7 @@ const ManagerPage = ({ params }) => {
 
   return (
     <div>
-      <div className="flex w-full flex-col xl:flex-row">
+      <div className="flex w-full">
         <div className="card rounded-box min-w-[600px]">
           <ManagerCard managerData={managerData} />
           {/* Starting XI Layout with Grouped Rows */}
@@ -109,12 +109,12 @@ const ManagerPage = ({ params }) => {
             </div>
           </div>
           <div className="card rounded-box min-w-[600px] mt-10">
-            <div className="bg-neutral-700 py-4">
+            <div className="bg-neutral-700 py-4 rounded-lg">
               <h2 className="text-white font-bold text-3xl ml-8">
                 Rank Details
               </h2>
             </div>
-            <div className="flex w-full p-2">
+            <div className="flex w-full p-2 mb-10">
               <div className="flex-1 ml-1 text-2xl font-bold">
                 <p className="flex w-4/5 justify-between p-1">
                   Points{" "}
@@ -159,10 +159,6 @@ const ManagerPage = ({ params }) => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="lg:divider-horizontal"></div>
-        <div className="card rounded-box min-w-[600px] mt-4 mb-10">
-          <Fixtures managerData={managerData} />
         </div>
       </div>
     </div>

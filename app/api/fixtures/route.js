@@ -1,21 +1,34 @@
+import axios from "axios";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
   try {
-    // Fetch general info to determine the current gameweek
-    const infoRes = await fetch(
+    // Fetch general info to determine the current gameweek using axios
+    const bootstrapResponse = await axios.get(
       "https://fantasy.premierleague.com/api/bootstrap-static/"
     );
-    const infoData = await infoRes.json();
-    const currentGameweek = infoData.events.find(
-      (event) => event.is_current
-    ).id;
 
-    // Fetch fixtures and stats data for the current gameweek
-    const fixturesRes = await fetch(
+    // Find the current event
+    const currentEvent = bootstrapResponse.data.events.find(
+      (event) => event.is_current
+    );
+
+    if (!currentEvent) {
+      return new Response(
+        JSON.stringify({ error: "No current gameweek found" }),
+        {
+          status: 404,
+        }
+      );
+    }
+
+    const currentGameweek = currentEvent.id;
+
+    // Fetch fixtures and stats data for the current gameweek (axios with live data)
+    const fixturesResponse = await axios.get(
       `https://fantasy.premierleague.com/api/fixtures/?event=${currentGameweek}`
     );
-    const fixtures = await fixturesRes.json();
+    const fixtures = fixturesResponse.data;
 
     // Extract relevant stats from each fixture
     const fixturesWithKeyStats = fixtures.map((fixture) => {

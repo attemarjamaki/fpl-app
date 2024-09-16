@@ -6,8 +6,8 @@ import Footer from "./components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "FPL Welho",
-  description: "FPL Points Tracker",
+  title: "FPL24.com",
+  description: "FPL Live Data Tool",
 };
 
 export default function RootLayout({ children }) {

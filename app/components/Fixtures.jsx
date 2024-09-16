@@ -73,14 +73,13 @@ const Fixtures = ({ managerData }) => {
   return (
     <>
       <div>
-        <div className="bg-neutral-700 py-4">
-          <h2 className="text-white font-bold text-3xl ml-8">
-            Gameweek {managerData.currentGameweek} Fixtures
-          </h2>
+        <div className="bg-neutral-700 py-4 rounded-lg">
+          <h2 className="text-white font-bold text-3xl ml-8">Bonus Points</h2>
         </div>
       </div>
       {fixtures.map((fixture, index) => (
         <div key={index}>
+          {console.log(fixture.minutes)}
           <div key={index} className="flex w-full mt-4 ">
             <div className="flex-1">
               <div className="flex">

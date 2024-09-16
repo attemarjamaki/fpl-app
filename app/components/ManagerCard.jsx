@@ -18,7 +18,7 @@ const ManagerCard = ({ managerData }) => {
   }
   return (
     <div className="mt-4">
-      <div className="bg-neutral-700 py-4">
+      <div className="bg-neutral-700 py-4 rounded-lg">
         <h2 className="text-white font-bold text-3xl ml-8">
           {managerData.managerName}
         </h2>
