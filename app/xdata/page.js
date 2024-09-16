@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const ExpectedDataPage = () => {
+const ExpectedData = () => {
   const [players, setPlayers] = useState([]);
   const [teamNames, setTeamNames] = useState({});
   const [loading, setLoading] = useState(true);
@@ -40,41 +40,51 @@ const ExpectedDataPage = () => {
       }
     };
 
+    async function fetchTeamNames() {
+      try {
+        const res = await fetch("/api/teams");
+        if (!res.ok) {
+          throw new Error("Failed to fetch team names");
+        }
+        const data = await res.json();
+        setTeamNames(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+
     fetchData();
+    fetchTeamNames();
   }, []);
 
   if (loading) return <p>Loading data...</p>;
   if (error) return <p>{error}</p>;
 
-  // Function to get team name from team ID using the teamNames object
-  const getTeamName = (teamId) => {
-    return teamNames[teamId] || "Unknown Team";
-  };
-
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">
-        Top 25 Players by Expected Goal Involvements (xGI)
-      </h1>
-      <div className="overflow-x-auto">
+    <div className="p-8 mb-10">
+      <div className="bg-neutral-700 py-4 rounded-lg mb-4">
+        <h2 className="text-white font-bold text-3xl ml-8">Expected Data</h2>
+      </div>
+
+      <div className="overflow-x-auto rounded-lg">
         <table className="table-auto w-full text-left">
           <thead>
             <tr className="bg-gray-200">
               <th className="p-2">Player</th>
               <th className="p-2">Team</th>
               <th className="p-2">Position</th>
-              <th className="p-2">Price (£)</th>
-              <th className="p-2">Total Points</th>
-              <th className="p-2">Expected Goals (xG)</th>
-              <th className="p-2">Expected Assists (xA)</th>
-              <th className="p-2">Expected Goal Involvements (xGI)</th>
+              <th className="p-2">(£)</th>
+              <th className="p-2">Points</th>
+              <th className="p-2">(xG)</th>
+              <th className="p-2">(xA)</th>
+              <th className="p-2">(xGI)</th>
             </tr>
           </thead>
           <tbody>
             {players.map((player, index) => (
               <tr key={index} className="border-t">
                 <td className="p-2">{player.name}</td>
-                <td className="p-2">{getTeamName(player.team)}</td>
+                <td className="p-2">{teamNames[player.team]}</td>
                 <td className="p-2">{player.position}</td>
                 <td className="p-2">£{player.price}</td>
                 <td className="p-2">{player.totalPoints}</td>
@@ -96,4 +106,4 @@ const ExpectedDataPage = () => {
   );
 };
 
-export default ExpectedDataPage;
+export default ExpectedData;

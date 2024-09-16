@@ -10,15 +10,13 @@ export async function GET(request) {
 
     // Extract the player data (elements) and team data (teams)
     const players = data.elements;
-    const teams = data.teams;
 
     // Prepare the processed data
     const processedPlayers = players.map((player) => {
-      const team = teams.find((t) => t.id === player.team); // Get team name by ID
       return {
         name: player.web_name,
         position: mapPosition(player.element_type),
-        team: team ? team.name : "Unknown Team",
+        team: player.team,
         price: (player.now_cost / 10).toFixed(1), // Convert price from tenths to actual value
         totalPoints: player.total_points,
         expectedGoals: player.expected_goals_per_90 || 0,
