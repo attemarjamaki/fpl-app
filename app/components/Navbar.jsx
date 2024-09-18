@@ -34,15 +34,21 @@ const Navbar = () => {
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
         >
-          <li>
-            <a>Bonus</a>
-          </li>
-          <li>
-            <a>xData</a>
-          </li>
-          <li>
-            <a>Capitancy</a>
-          </li>
+          <Link href={"/bonus"}>
+            <li>
+              <p className="text-xl font-semibold">Bonus</p>
+            </li>
+          </Link>
+          <Link href={"/xdata"}>
+            <li>
+              <p className="text-xl font-semibold">xData</p>
+            </li>
+          </Link>
+          <Link href={"/captaincy"}>
+            <li>
+              <p className="text-xl font-semibold">Captaincy</p>
+            </li>
+          </Link>
         </ul>
       </div>
 
@@ -56,6 +62,11 @@ const Navbar = () => {
           <Link href={"/xdata"}>
             <li>
               <p className="text-xl font-semibold">xData</p>
+            </li>
+          </Link>
+          <Link href={"/captaincy"}>
+            <li>
+              <p className="text-xl font-semibold">Captaincy</p>
             </li>
           </Link>
         </ul>
