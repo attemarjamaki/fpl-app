@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PlayerCard from "../components/PlayerCard";
 import ManagerCard from "../components/ManagerCard";
-import Fixtures from "../components/Fixtures";
+import Transfers from "../components/Transfers";
 
 const ManagerPage = ({ params }) => {
   const [managerData, setManagerData] = useState(null);
@@ -159,6 +159,7 @@ const ManagerPage = ({ params }) => {
               </div>
             </div>
           </div>
+          <Transfers managerData={managerData} />
         </div>
       </div>
     </div>

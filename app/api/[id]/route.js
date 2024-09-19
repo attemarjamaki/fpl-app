@@ -55,10 +55,16 @@ export async function GET(request, { params }) {
       `https://fantasy.premierleague.com/api/event/${currentGameweek}/live/`
     );
 
+    const transfersResponse = await axios.get(
+      `https://fantasy.premierleague.com/api/entry/${id}/transfers/`
+    );
+
     // const managerData = managerResponse.data;
     const picks = picksResponse.data.picks;
     const liveData = liveResponse.data.elements;
     const playerDetails = bootstrapResponse.data.elements; // Add this line
+
+    const transfers = transfersResponse.data;
 
     let livePoints = 0;
     const players = picks.map((pick) => {
@@ -87,6 +93,10 @@ export async function GET(request, { params }) {
       };
     });
 
+    const latestTransfers = transfers.find(
+      (transfer) => transfer.event === currentGameweek
+    );
+
     // Compare current rank with last week's rank
     let rankChangeIndicator = "same";
     if (currentRank < lastRank) {
@@ -107,6 +117,7 @@ export async function GET(request, { params }) {
       players: players, // Include players data
       averageScore: averageEntryScore,
       currentGameweek: currentGameweek,
+      latestTransfers: latestTransfers,
     };
 
     return new Response(JSON.stringify(responseData), {
