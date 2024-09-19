@@ -93,7 +93,7 @@ export async function GET(request, { params }) {
       };
     });
 
-    const latestTransfers = transfers.find(
+    const latestTransfers = transfers.filter(
       (transfer) => transfer.event === currentGameweek
     );
 

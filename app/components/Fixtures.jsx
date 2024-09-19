@@ -4,7 +4,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const Fixtures = ({ managerData }) => {
+const Fixtures = () => {
   const [players, setPlayers] = useState({});
   const [teamNames, setTeamNames] = useState({});
   const [fixtures, setFixtures] = useState([]);
