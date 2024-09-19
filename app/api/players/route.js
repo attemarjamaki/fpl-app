@@ -11,7 +11,7 @@ export async function GET() {
       id: player.id,
       //  first_name: player.first_name,
       second_name: player.web_name,
-      //  team: player.team,
+      team: player.team,
       //  position: player.element_type,
     }));
 

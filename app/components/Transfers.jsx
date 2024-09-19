@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 const Transfers = ({ managerData }) => {
   const [players, setPlayers] = useState();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchPlayers() {
@@ -15,6 +16,7 @@ const Transfers = ({ managerData }) => {
         }
         const data = await res.json();
         setPlayers(data);
+        console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -24,28 +26,36 @@ const Transfers = ({ managerData }) => {
     fetchPlayers();
   }, []);
 
+  if (loading) return <div> </div>;
+  if (error) return <div>Error: {error}</div>;
+
   const transfers = managerData.latestTransfers;
+
+  const getPlayerName = (id) => {
+    const player = players.find((p) => p.id === id);
+    return player ? player.second_name : "Unknown";
+  };
 
   return (
     <div>
       Transfers
       <div>
-        {" "}
         {transfers && transfers.length > 0 ? (
-          // Map over the transfers array and display each transfer
           transfers.map((transfer, index) => (
-            <div key={index}>
-              <p>
-                <strong>Player:</strong> {transfer.element_in}
-              </p>
-              <p>
-                <strong>From:</strong> {transfer.element_out}
-              </p>
+            <div key={index} className="flex w-full">
+              <div className="flex-1">
+                <p className="font-bold">Player in</p>{" "}
+                {getPlayerName(transfer.element_in)}
+              </div>
+              <div className="flex-1">
+                <p className="font-bold">Player out</p>{" "}
+                {getPlayerName(transfer.element_out)}
+              </div>
               <hr />
             </div>
           ))
         ) : (
-          <p>No transfers available</p>
+          <p>No transfers Made</p>
         )}
       </div>
     </div>
