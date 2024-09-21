@@ -53,34 +53,32 @@ const ExpectedData = () => {
       </div>
 
       <div className="overflow-x-auto rounded-lg">
-        <table className="table-auto w-full text-left">
+        <table className="table-auto w-full text-left font-semibold">
           <thead>
-            <tr className="bg-gray-200">
-              <th className="p-2">Player</th>
-              <th className="p-2">Team</th>
-              <th className="p-2">Position</th>
-              <th className="p-2">(£)</th>
-              <th className="p-2">Points</th>
-              <th className="p-2">(xG)</th>
-              <th className="p-2">(xA)</th>
-              <th className="p-2">(xGI)</th>
+            <tr className=" border-b">
+              <th className="py-2 px-4">Name</th>
+              <th className="py-2 px-4">Position</th>
+              <th className="py-2 px-4">Cost</th>
+              <th className="py-2 px-4">Points</th>
+              <th className="py-2 px-4">xG</th>
+              <th className="py-2 px-4">xA</th>
+              <th className="py-2 px-4">xGI</th>
             </tr>
           </thead>
           <tbody>
             {players.map((player, index) => (
               <tr key={index} className="border-t">
-                <td className="p-2">{player.name}</td>
-                <td className="p-2">{teamNames[player.team]}</td>
-                <td className="p-2">{player.position}</td>
-                <td className="p-2">£{player.price}</td>
-                <td className="p-2">{player.totalPoints}</td>
-                <td className="p-2">
+                <td className="py-2 px-4">{player.name}</td>
+                <td className="py-2 px-4">{player.position}</td>
+                <td className="py-2 px-4">£{player.price}</td>
+                <td className="py-2 px-4">{player.totalPoints}</td>
+                <td className="py-2 px-4">
                   {Number(player.expectedGoals).toFixed(2)}
                 </td>
-                <td className="p-2">
+                <td className="py-2 px-4">
                   {Number(player.expectedAssists).toFixed(2)}
                 </td>
-                <td className="p-2">
+                <td className="py-2 px-4">
                   {Number(player.expectedGoalInvolvements).toFixed(2)}
                 </td>
               </tr>

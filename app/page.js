@@ -19,7 +19,7 @@ export default function Home() {
           <div className="mockup-browser-toolbar">
             <div className="input mx-6 !overflow-visible !w-4/5">
               fantasy.premierleague.com/entry/
-              <span className=" border-4 border-red-600">123456</span>/event/3
+              <span className=" border-4 border-red-600">69420</span>/event/3
             </div>
           </div>
           <div className="bg-base-200 flex justify-center px-4 py-16 bg-[url('/images/pitch.svg')] bg-no-repeat bg-top bg-cover"></div>
