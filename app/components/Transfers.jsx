@@ -26,7 +26,7 @@ const Transfers = ({ managerData }) => {
     fetchPlayers();
   }, []);
 
-  if (loading) return <div> </div>;
+  if (loading) return <div></div>;
   if (error) return <div>Error: {error}</div>;
 
   const transfers = managerData.latestTransfers;
@@ -37,7 +37,7 @@ const Transfers = ({ managerData }) => {
   };
 
   return (
-    <div>
+    <div className="mb-10">
       <div className="bg-neutral-700 py-4 rounded-lg">
         <h2 className="text-white font-bold text-3xl ml-8">Transfers</h2>
       </div>
