@@ -112,7 +112,7 @@ export async function GET(request, { params }) {
       overallRank: managerData.summary_overall_rank,
       lastRank: lastRank,
       rankChangeIndicator: rankChangeIndicator,
-      gameweekRank: managerData.summary_event_rank,
+      gameweekRank: managerData.summary_event_rank || "NaN",
       livePoints: livePoints,
       players: players, // Include players data
       averageScore: averageEntryScore,

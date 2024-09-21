@@ -19,9 +19,9 @@ export async function GET(request) {
         team: player.team,
         price: (player.now_cost / 10).toFixed(1), // Convert price from tenths to actual value
         totalPoints: player.total_points,
-        expectedGoals: player.expected_goals_per_90 || 0,
-        expectedAssists: player.expected_assists_per_90 || 0,
-        expectedGoalInvolvements: player.expected_goal_involvements_per_90 || 0,
+        expectedGoals: player.expected_goals || 0,
+        expectedAssists: player.expected_assists || 0,
+        expectedGoalInvolvements: player.expected_goal_involvements || 0,
       };
     });
 
@@ -46,10 +46,10 @@ export async function GET(request) {
 // Helper function to map position IDs to position names
 function mapPosition(positionId) {
   const positions = {
-    1: "Goalkeeper",
-    2: "Defender",
-    3: "Midfielder",
-    4: "Forward",
+    1: "GKP",
+    2: "DEF",
+    3: "MID",
+    4: "FWD",
   };
-  return positions[positionId] || "Unknown Position";
+  return positions[positionId] || "NaN";
 }

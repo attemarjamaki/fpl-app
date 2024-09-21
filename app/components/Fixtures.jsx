@@ -58,7 +58,12 @@ const Fixtures = () => {
     fetchPlayers();
   }, []);
 
-  if (loading) return <div> </div>;
+  if (loading)
+    return (
+      <div className="mt-20">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
   if (error) return <div>Error: {error}</div>;
 
   const getPlayerName = (id) => {

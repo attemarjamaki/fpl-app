@@ -43,7 +43,12 @@ const ExpectedData = () => {
     fetchData();
   }, []);
 
-  if (loading) return <p>Loading data...</p>;
+  if (loading)
+    return (
+      <div className="mt-20">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
   if (error) return <p>{error}</p>;
 
   return (
@@ -67,7 +72,7 @@ const ExpectedData = () => {
           </thead>
           <tbody>
             {players.map((player, index) => (
-              <tr key={index} className="border-t">
+              <tr key={index} className="border-t text-ce">
                 <td className="py-2 px-4">{player.name}</td>
                 <td className="py-2 px-4">{player.position}</td>
                 <td className="py-2 px-4">£{player.price}</td>

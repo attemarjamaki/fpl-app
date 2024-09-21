@@ -38,26 +38,35 @@ const Transfers = ({ managerData }) => {
 
   return (
     <div>
-      Transfers
-      <div>
-        {transfers && transfers.length > 0 ? (
-          transfers.map((transfer, index) => (
-            <div key={index} className="flex w-full">
-              <div className="flex-1">
-                <p className="font-bold">Player in</p>{" "}
-                {getPlayerName(transfer.element_in)}
-              </div>
-              <div className="flex-1">
-                <p className="font-bold">Player out</p>{" "}
-                {getPlayerName(transfer.element_out)}
-              </div>
-              <hr />
-            </div>
-          ))
-        ) : (
-          <p>No transfers Made</p>
-        )}
+      <div className="bg-neutral-700 py-4 rounded-lg">
+        <h2 className="text-white font-bold text-3xl ml-8">Transfers</h2>
       </div>
+      {transfers && transfers.length > 0 ? (
+        <div className="overflow-x-auto rounded-lg">
+          <table className="table-auto w-full text-left font-semibold">
+            <thead>
+              <tr className="border-b text-2xl">
+                <th className="py-2 px-4">Player in</th>
+                <th className="py-2 px-4">Player out</th>
+              </tr>
+            </thead>
+            <tbody>
+              {transfers.map((transfer, index) => (
+                <tr key={index} className="border-t text-xl">
+                  <td className="py-2 px-4">
+                    {getPlayerName(transfer.element_in)}
+                  </td>
+                  <td className="py-2 px-4">
+                    {getPlayerName(transfer.element_out)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p>No transfers Made</p>
+      )}
     </div>
   );
 };
