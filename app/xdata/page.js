@@ -40,21 +40,7 @@ const ExpectedData = () => {
       }
     };
 
-    async function fetchTeamNames() {
-      try {
-        const res = await fetch("/api/teams");
-        if (!res.ok) {
-          throw new Error("Failed to fetch team names");
-        }
-        const data = await res.json();
-        setTeamNames(data);
-      } catch (error) {
-        setError(error.message);
-      }
-    }
-
     fetchData();
-    fetchTeamNames();
   }, []);
 
   if (loading) return <p>Loading data...</p>;
