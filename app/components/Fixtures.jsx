@@ -60,7 +60,7 @@ const Fixtures = () => {
 
   if (loading)
     return (
-      <div className="mt-20">
+      <div className="mt-20 flex justify-center">
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -76,7 +76,7 @@ const Fixtures = () => {
   };
 
   return (
-    <>
+    <div>
       <div>
         <div className="bg-neutral-700 py-4 rounded-lg">
           <h2 className="text-white font-bold text-3xl ml-8">Bonus Points</h2>
@@ -300,7 +300,7 @@ const Fixtures = () => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

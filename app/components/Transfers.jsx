@@ -42,12 +42,12 @@ const Transfers = ({ managerData }) => {
         <h2 className="text-white font-bold text-3xl ml-8">Transfers</h2>
       </div>
       {transfers && transfers.length > 0 ? (
-        <div className="overflow-x-auto rounded-lg">
+        <div className="overflow-x-auto rounded-lg mt-1">
           <table className="table-auto w-full text-left font-semibold">
             <thead>
               <tr className="border-b text-2xl">
                 <th className="py-2 px-4">Player in</th>
-                <th className="py-2 px-4">Player out</th>
+                <th className="py-2 px-2">Player out</th>
               </tr>
             </thead>
             <tbody>
@@ -56,7 +56,7 @@ const Transfers = ({ managerData }) => {
                   <td className="py-2 px-4">
                     {getPlayerName(transfer.element_in)}
                   </td>
-                  <td className="py-2 px-4">
+                  <td className="py-2 px-2">
                     {getPlayerName(transfer.element_out)}
                   </td>
                 </tr>

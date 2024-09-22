@@ -5,10 +5,14 @@ export default function Home() {
     <>
       <section className="px-6 md:px-20 py-24 max-w-4xl mx-auto">
         <div className="flex flex-col justify-center text-center">
-          <h1 className=" text-5xl font-bold">FPL Points Tracker</h1>
+          <h1 className=" text-5xl font-bold">
+            <span>
+              FPL<span className="text-primary">24</span>.com
+            </span>
+          </h1>
           <p className="mt-12 text-2xl md:w-4/5 w-full mx-auto">
-            Discover real-time insights and personalized analytics for your
-            fantasy football team with our dynamic, user-friendly web app
+            A Fantasy Premier League tool to help you make bad trasfers and
+            giving you the stress of not captaining Haaland in real time.
           </p>
           <Searchbar />
         </div>
