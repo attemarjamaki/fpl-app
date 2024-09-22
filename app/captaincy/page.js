@@ -1,7 +1,7 @@
 import React from "react";
 
 const Captaincy = () => {
-  return <div>Captaincy</div>;
+  return <div>Page coming soon...</div>;
 };
 
 export default Captaincy;
