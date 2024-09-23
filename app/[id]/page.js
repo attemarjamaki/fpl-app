@@ -58,7 +58,7 @@ const ManagerPage = ({ params }) => {
   return (
     <div>
       <div className="flex w-full">
-        <div className="card rounded-box min-w-[600px]">
+        <div className="card rounded-box">
           <ManagerCard managerData={managerData} />
           {/* Starting XI Layout with Grouped Rows */}
           <div className="mt-4 bg-[url('/images/pitch.svg')] bg-no-repeat bg-center bg-cover px-2 space-y-4">
@@ -108,7 +108,7 @@ const ManagerPage = ({ params }) => {
               )}
             </div>
           </div>
-          <div className="card rounded-box min-w-[600px] mt-10">
+          <div className="card rounded-box mt-10">
             <div className="bg-neutral-700 py-4 rounded-lg">
               <h2 className="text-white font-bold text-3xl ml-8">
                 Rank Details
