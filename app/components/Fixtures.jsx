@@ -157,7 +157,6 @@ const Fixtures = () => {
                             style={{ width: "28px" }}
                             className="ml-0.5"
                           />
-                          {assist.value > 1 ? ` (${assist.value})` : ""}
                         </span>
                       </p>
                     </div>
