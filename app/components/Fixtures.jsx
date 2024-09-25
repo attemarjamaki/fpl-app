@@ -76,7 +76,7 @@ const Fixtures = () => {
   };
 
   return (
-    <div className="p-3 mb-10 min-w-[600px]">
+    <div className="mt-4 mb-10 min-w-[600px]">
       <div>
         <div className="bg-neutral-700 py-4 rounded-lg">
           <h2 className="text-white font-bold text-3xl ml-8">Bonus Points</h2>
