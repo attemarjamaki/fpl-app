@@ -52,7 +52,7 @@ const ExpectedData = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="p-8 mb-10">
+    <div className="p-3 mb-10 min-w-[600px]">
       <div className="bg-neutral-700 py-4 rounded-lg mb-4">
         <h2 className="text-white font-bold text-3xl ml-8">Expected Data</h2>
       </div>

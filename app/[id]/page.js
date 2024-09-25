@@ -61,7 +61,7 @@ const ManagerPage = ({ params }) => {
         <div className="card rounded-box">
           <ManagerCard managerData={managerData} />
           {/* Starting XI Layout with Grouped Rows */}
-          <div className="mt-4 bg-[url('/images/pitch.svg')] bg-no-repeat bg-center bg-cover px-2 space-y-4">
+          <div className="mt-4 bg-[url('/images/pitch.svg')] bg-no-repeat bg-center bg-cover space-y-4">
             {/* Goalkeeper */}
             <div className="flex justify-center">
               {startingPlayers
@@ -72,7 +72,7 @@ const ManagerPage = ({ params }) => {
             </div>
 
             {/* Defenders */}
-            <div className="flex justify-around gap-2">
+            <div className="flex justify-around gap-1">
               {startingPlayers
                 .filter((player) => player.position === 2)
                 .map((player) => (
@@ -81,7 +81,7 @@ const ManagerPage = ({ params }) => {
             </div>
 
             {/* Midfielders */}
-            <div className="flex justify-around gap-2">
+            <div className="flex justify-around gap-1">
               {startingPlayers
                 .filter((player) => player.position === 3)
                 .map((player) => (
@@ -90,7 +90,7 @@ const ManagerPage = ({ params }) => {
             </div>
 
             {/* Forwards */}
-            <div className="flex justify-around gap-2">
+            <div className="flex justify-around gap-1">
               {startingPlayers
                 .filter((player) => player.position === 4)
                 .map((player) => (
