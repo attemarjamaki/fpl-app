@@ -14,7 +14,7 @@ export const viewport = {
   width: "device-width",
   initialScale: 0.6,
   maximumScale: 1,
-  userScalable: false,
+  userScalable: true,
 };
 
 export default function RootLayout({ children }) {
