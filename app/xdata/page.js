@@ -57,7 +57,7 @@ const ExpectedData = () => {
         <h2 className="text-white font-bold text-3xl ml-8">Expected Data</h2>
       </div>
 
-      <div className="overflow-x-auto rounded-lg">
+      <div className="overflow-x-auto rounded-lg text-xl">
         <table className="table-auto w-full text-left font-semibold">
           <thead>
             <tr className=" border-b">
