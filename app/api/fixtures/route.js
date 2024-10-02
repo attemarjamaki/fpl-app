@@ -70,7 +70,14 @@ export async function GET(request) {
       };
     });
 
-    return NextResponse.json(fixturesWithKeyStats);
+    return NextResponse.json(fixturesWithKeyStats, {
+      headers: {
+        "Cache-Control":
+          "no-store, no-cache, must-revalidate, proxy-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    });
   } catch (error) {
     console.error("Unexpected error:", error);
     return NextResponse.json(
