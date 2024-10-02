@@ -38,6 +38,10 @@ export async function GET(request) {
       status: 500,
       headers: {
         "Content-Type": "application/json",
+        "Cache-Control":
+          "no-store, no-cache, must-revalidate, proxy-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
       },
     });
   }
