@@ -16,7 +16,6 @@ const Transfers = ({ managerData }) => {
         }
         const data = await res.json();
         setPlayers(data);
-        console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {
