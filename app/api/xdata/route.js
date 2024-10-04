@@ -2,16 +2,12 @@ import axios from "axios";
 
 export async function GET(request) {
   try {
-    // Fetch data from the FPL API
     const response = await axios.get(
       "https://fantasy.premierleague.com/api/bootstrap-static/"
     );
     const data = response.data;
-
-    // Extract the player data (elements) and team data (teams)
     const players = data.elements;
 
-    // Prepare the processed data
     const processedPlayers = players.map((player) => {
       return {
         name: player.web_name,
@@ -25,7 +21,6 @@ export async function GET(request) {
       };
     });
 
-    // Send back the processed data as a JSON response
     return new Response(JSON.stringify(processedPlayers), {
       status: 200,
       headers: {
@@ -47,7 +42,6 @@ export async function GET(request) {
   }
 }
 
-// Helper function to map position IDs to position names
 function mapPosition(positionId) {
   const positions = {
     1: "GKP",

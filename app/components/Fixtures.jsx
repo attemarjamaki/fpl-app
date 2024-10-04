@@ -84,7 +84,6 @@ const Fixtures = () => {
       </div>
       {fixtures.map((fixture, index) => (
         <div key={index}>
-          {console.log(fixture.minutes)}
           <div key={index} className="flex w-full mt-4 ">
             <div className="flex-1">
               <div className="flex">

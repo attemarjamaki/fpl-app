@@ -23,14 +23,12 @@ export async function GET(request, { params }) {
     const currentGameweek = currentEvent.id;
     const averageEntryScore = currentEvent.average_entry_score;
 
-    // Fetch manager data
     const managerResponse = await axios.get(
       `https://fantasy.premierleague.com/api/entry/${id}/`
     );
 
     const managerData = managerResponse.data;
 
-    // Find the overall league by its ID (314)
     const overallLeague = managerData.leagues.classic.find(
       (league) => league.id === 314
     );
@@ -44,7 +42,6 @@ export async function GET(request, { params }) {
       );
     }
 
-    // Extract current and last week's rank from the overall league
     const currentRank = overallLeague.entry_rank;
     const lastRank = overallLeague.entry_last_rank;
 
@@ -59,11 +56,12 @@ export async function GET(request, { params }) {
       `https://fantasy.premierleague.com/api/entry/${id}/transfers/`
     );
 
-    // const managerData = managerResponse.data;
-    const picks = picksResponse.data.picks;
+    const rawPicks = picksResponse.data.picks;
+    const picks = rawPicks.filter(
+      (pick) => pick.position >= 1 && pick.position <= 11
+    );
     const liveData = liveResponse.data.elements;
-    const playerDetails = bootstrapResponse.data.elements; // Add this line
-
+    const playerDetails = bootstrapResponse.data.elements;
     const transfers = transfersResponse.data;
 
     let livePoints = 0;
@@ -73,19 +71,19 @@ export async function GET(request, { params }) {
       );
       const playerInfo = playerDetails.find(
         (player) => player.id === pick.element
-      ); // Add this line
+      );
 
       let playerPoints = playerLiveData.stats.total_points;
       if (pick.is_captain) {
-        playerPoints *= 2; // Double points for captain
+        playerPoints *= 2;
       }
       livePoints += playerPoints;
 
       return {
         id: pick.element,
-        position: playerInfo.element_type, // Position (1: GKP, 2: DEF, 3: MID, 4: FWD)
-        name: playerInfo.web_name, // Player's name
-        team: playerInfo.team, // Team ID
+        position: playerInfo.element_type,
+        name: playerInfo.web_name,
+        team: playerInfo.team,
         selectedPercent: playerInfo.selected_by_percent,
         points: playerPoints,
         isCaptain: pick.is_captain,
@@ -97,12 +95,11 @@ export async function GET(request, { params }) {
       (transfer) => transfer.event === currentGameweek
     );
 
-    // Compare current rank with last week's rank
     let rankChangeIndicator = "same";
     if (currentRank < lastRank) {
-      rankChangeIndicator = "up"; // Rank improved (lower rank number)
+      rankChangeIndicator = "up";
     } else if (currentRank > lastRank) {
-      rankChangeIndicator = "down"; // Rank worsened (higher rank number)
+      rankChangeIndicator = "down";
     }
 
     const responseData = {
@@ -114,7 +111,7 @@ export async function GET(request, { params }) {
       rankChangeIndicator: rankChangeIndicator,
       gameweekRank: managerData.summary_event_rank || "NaN",
       livePoints: livePoints,
-      players: players, // Include players data
+      players: players,
       averageScore: averageEntryScore,
       currentGameweek: currentGameweek,
       latestTransfers: latestTransfers,
@@ -125,7 +122,6 @@ export async function GET(request, { params }) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    // console.error("Error fetching live points:", error);
     return new Response(
       JSON.stringify({ error: "Failed to fetch live points" }),
       {
