@@ -45,7 +45,7 @@ export default function Home() {
           <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-xl font-medium">
-              Where can I pay for the use of this amazing and beautiful website
+              Where can I pay for the use of this amazing and beautiful website?
             </div>
             <div className="collapse-content">
               <p>We don't accept payment, but FPL advice would be nice.</p>
