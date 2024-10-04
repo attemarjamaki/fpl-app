@@ -28,6 +28,42 @@ export default function Home() {
           </div>
           <div className="bg-base-200 flex justify-center px-4 py-16 bg-[url('/images/pitch.svg')] bg-no-repeat bg-top bg-cover"></div>
         </div>
+
+        <div className="space-y-2 mt-20">
+          <div className="flex justify-center mb-10">
+            <h2 className="text-3xl font-semibold">FAQ</h2>
+          </div>
+          <div className="collapse collapse-arrow bg-base-200">
+            <input type="radio" name="my-accordion-2" defaultChecked />
+            <div className="collapse-title text-xl font-medium">
+              Do I have to sign up?
+            </div>
+            <div className="collapse-content">
+              <p>Nope.</p>
+            </div>
+          </div>
+          <div className="collapse collapse-arrow bg-base-200">
+            <input type="radio" name="my-accordion-2" />
+            <div className="collapse-title text-xl font-medium">
+              Where can I pay for the use of this amazing and beautiful website
+            </div>
+            <div className="collapse-content">
+              <p>We don't accept payment, but FPL advice would be nice.</p>
+            </div>
+          </div>
+          <div className="collapse collapse-arrow bg-base-200">
+            <input type="radio" name="my-accordion-2" />
+            <div className="collapse-title text-xl font-medium">
+              Why just not use LiveFPL?
+            </div>
+            <div className="collapse-content">
+              <p>
+                No reason. LiveFPL is better but this is more fun because it
+                probably doesn't work half of the time.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );
