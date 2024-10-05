@@ -61,7 +61,7 @@ const ManagerPage = ({ params }) => {
         <div className="card rounded-box">
           <ManagerCard managerData={managerData} />
           {/* Starting XI Layout with Grouped Rows */}
-          <div className="mt-4 bg-[url('/images/pitch.svg')] bg-no-repeat bg-center bg-cover space-y-4 px-4">
+          <div className="mt-4 bg-[url('/images/pitch.svg')] bg-no-repeat bg-center bg-cover space-y-4 px-4 min-w-[624px]">
             {/* Goalkeeper */}
             <div className="flex justify-center">
               {startingPlayers

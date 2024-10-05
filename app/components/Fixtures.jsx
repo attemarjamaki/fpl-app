@@ -27,7 +27,9 @@ const Fixtures = () => {
 
     async function fetchFixtures() {
       try {
-        const res = await fetch("/api/fixtures");
+        const res = await fetch("/api/fixtures", {
+          next: { fetchCache: "force-no-store" },
+        });
         if (!res.ok) {
           throw new Error("Failed to fetch fixtures");
         }
