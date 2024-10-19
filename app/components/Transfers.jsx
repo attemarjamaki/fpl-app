@@ -55,7 +55,7 @@ const Transfers = ({ managerData }) => {
                   <td className="py-2 px-4">
                     {getPlayerName(transfer.element_in)}
                   </td>
-                  <td className="py-2 px-2">
+                  <td className="py-2 px-4">
                     {getPlayerName(transfer.element_out)}
                   </td>
                 </tr>
@@ -64,7 +64,7 @@ const Transfers = ({ managerData }) => {
           </table>
         </div>
       ) : (
-        <p>No transfers Made</p>
+        <p className="py-2 px-4 text-xl">No transfers Made</p>
       )}
     </div>
   );
