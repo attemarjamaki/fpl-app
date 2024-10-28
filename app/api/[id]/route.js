@@ -56,16 +56,13 @@ export async function GET(request, { params }) {
       `https://fantasy.premierleague.com/api/entry/${id}/transfers/`
     );
 
-    const rawPicks = picksResponse.data.picks;
-    const picks = rawPicks.filter(
-      (pick) => pick.position >= 1 && pick.position <= 11
-    );
+    const picks = picksResponse.data.picks;
     const liveData = liveResponse.data.elements;
     const playerDetails = bootstrapResponse.data.elements;
     const transfers = transfersResponse.data;
 
     let livePoints = 0;
-    const players = picks.map((pick) => {
+    const players = picks.map((pick, index) => {
       const playerLiveData = liveData.find(
         (player) => player.id === pick.element
       );
@@ -77,7 +74,9 @@ export async function GET(request, { params }) {
       if (pick.is_captain) {
         playerPoints *= 2;
       }
-      livePoints += playerPoints;
+      if (index < 11) {
+        livePoints += playerPoints;
+      }
 
       return {
         id: pick.element,

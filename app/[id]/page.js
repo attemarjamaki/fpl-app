@@ -52,6 +52,8 @@ const ManagerPage = ({ params }) => {
   const startingPlayers = managerData.players.slice(0, 11);
   const benchPlayers = managerData.players.slice(11, 15);
 
+  console.log(benchPlayers);
+
   let rankDifference = managerData.lastRank - managerData.overallRank;
   let percentageChange = (rankDifference / managerData.lastRank) * 100;
 
