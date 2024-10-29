@@ -14,10 +14,7 @@ const ManagerPage = ({ params }) => {
   useEffect(() => {
     async function fetchManagerData() {
       try {
-        // Fetch the processed data from the API
         const response = await axios.get(`/api/${params.id}`);
-
-        // Store the response data in state
         setManagerData(response.data);
       } catch (err) {
         console.error("Error fetching manager data:", err);

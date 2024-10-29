@@ -5,12 +5,10 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request) {
   try {
-    // Fetch general info to determine the current gameweek using axios
     const bootstrapResponse = await axios.get(
       "https://fantasy.premierleague.com/api/bootstrap-static/"
     );
 
-    // Find the current event
     const currentEvent = bootstrapResponse.data.events.find(
       (event) => event.is_current
     );
@@ -26,13 +24,10 @@ export async function GET(request) {
 
     const currentGameweek = currentEvent.id;
 
-    // Fetch fixtures and stats data for the current gameweek (axios with live data)
     const fixturesResponse = await axios.get(
       `https://fantasy.premierleague.com/api/fixtures/?event=${currentGameweek}`
     );
     const fixtures = fixturesResponse.data;
-
-    // Extract relevant stats from each fixture
     const fixturesWithKeyStats = fixtures.map((fixture) => {
       const goalsScored = fixture.stats.find(
         (stat) => stat.identifier === "goals_scored"
