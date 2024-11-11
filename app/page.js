@@ -11,8 +11,8 @@ export default function Home() {
             </span>
           </h1>
           <p className="mt-12 text-2xl md:w-4/5 w-full mx-auto">
-            A Fantasy Premier League tool to help you make bad transfers and
-            giving you the stress of not captaining Haaland in real time.
+            Your Fantasy Premier League tool to make boldly bad decisions and
+            track your underwhelming score in real-time!
           </p>
           <Searchbar />
         </div>
