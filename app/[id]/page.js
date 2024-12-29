@@ -36,8 +36,7 @@ const ManagerPage = ({ params }) => {
   if (error)
     return (
       <div className="text-center mt-10 text-xl font-semibold">
-        Did you captain the right player? Time to find out… but first, the game
-        is updating! <br></br> Hold your breath, we’ll be back soon! 😅⚽
+        <p>Error 404: Data not found. It might be playing hide-and-seek.</p>
       </div>
     );
 
