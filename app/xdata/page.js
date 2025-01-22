@@ -14,22 +14,17 @@ const ExpectedData = () => {
       setLoading(true);
 
       try {
-        // Fetch player data from the Next.js API route
         const playerResponse = await axios.get("/api/xdata");
         const playerData = playerResponse.data;
-
-        // Fetch team names from the /api/teams endpoint
         const teamResponse = await axios.get("/api/teams");
-        const teamData = teamResponse.data;
 
-        // Sort players by expectedGoalInvolvements in descending order and take top 25
+        const teamData = teamResponse.data;
         const sortedPlayers = playerData
           .sort(
             (a, b) => b.expectedGoalInvolvements - a.expectedGoalInvolvements
           )
-          .slice(0, 25); // Get top 25 players
+          .slice(0, 25);
 
-        // Set players and team names in the state
         setPlayers(sortedPlayers);
         setTeamNames(teamData);
       } catch (err) {

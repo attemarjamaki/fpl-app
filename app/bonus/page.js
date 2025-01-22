@@ -1,5 +1,5 @@
 import React from "react";
-import Fixtures from "../components/Fixtures";
+import Fixtures from "../../components/Fixtures";
 
 const Bonus = () => {
   return (

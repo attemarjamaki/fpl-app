@@ -15,7 +15,7 @@ export async function GET(request) {
         name: player.web_name,
         position: mapPosition(player.element_type),
         team: player.team,
-        price: (player.now_cost / 10).toFixed(1), // Convert price from tenths to actual value
+        price: (player.now_cost / 10).toFixed(1),
         totalPoints: player.total_points,
         expectedGoals: player.expected_goals || 0,
         expectedAssists: player.expected_assists || 0,

@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import PlayerCard from "../components/PlayerCard";
-import ManagerCard from "../components/ManagerCard";
-import Transfers from "../components/Transfers";
+import PlayerCard from "../../components/PlayerCard";
+import ManagerCard from "../../components/ManagerCard";
+import Transfers from "../../components/Transfers";
 
 const ManagerPage = ({ params }) => {
   const [managerData, setManagerData] = useState(null);
