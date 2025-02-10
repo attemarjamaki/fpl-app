@@ -3,9 +3,9 @@ import Fixtures from "../../components/Fixtures";
 
 const Bonus = () => {
   return (
-    <div>
+    <section>
       <Fixtures />
-    </div>
+    </section>
   );
 };
 

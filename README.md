@@ -15,5 +15,6 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - **Transfers**: Keep track of transfers made.
 - **Data**: Get expected data on the top performing players of the season.
 - **Fixtures and Bonus**: See the Gameweek scores in real-time and what the bps standings are for each game.
+- **Captaincy Picker**: A wheel that will help you choose your captain for the gameweek.
 
 ![Expense Tracker Screenshot](./public/images/fpl24-page.png)
