@@ -1,7 +1,9 @@
-import React from "react";
+import WheelSpinner from "@/components/WheelSpinner";
 
-const Captaincy = () => {
-  return <div>Page coming soon...</div>;
-};
-
-export default Captaincy;
+export default function Home() {
+  return (
+    <section>
+      <WheelSpinner />
+    </section>
+  );
+}

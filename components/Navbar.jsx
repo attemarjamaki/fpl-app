@@ -4,7 +4,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 md:px-10">
+    <div className="navbar bg-base-100 md:px-10 z-50">
       <div className="flex-1">
         <Link href={"/"}>
           <p className="btn btn-ghost text-4xl font-bold">
@@ -44,13 +44,12 @@ const Navbar = () => {
               <p className="text-xl font-semibold">xData</p>
             </li>
           </Link>
-          {/*
+
           <Link href={"/captaincy"}>
             <li>
               <p className="text-xl font-semibold">Captaincy</p>
             </li>
           </Link>
-          */}
         </ul>
       </div>
 
@@ -66,13 +65,12 @@ const Navbar = () => {
               <p className="text-xl font-semibold">xData</p>
             </li>
           </Link>
-          {/*
+
           <Link href={"/captaincy"}>
             <li>
               <p className="text-xl font-semibold">Captaincy</p>
             </li>
           </Link>
-          */}
         </ul>
       </div>
     </div>
