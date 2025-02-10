@@ -1,3 +1,4 @@
+/*
 import { NextResponse } from "next/server";
 
 // API Route Handler
@@ -102,3 +103,4 @@ function calculateEffectiveOwnership(playerData) {
 
   return effectiveOwnership;
 }
+*/
