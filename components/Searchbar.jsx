@@ -16,11 +16,8 @@ const Searchbar = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center mt-20">
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-wrap gap-4 w-full px-4"
-      >
+    <div className="flex flex-col items-center justify-center">
+      <form onSubmit={handleSubmit} className="flex flex-wrap gap-2 w-full">
         <input
           type="text"
           value={fplId}

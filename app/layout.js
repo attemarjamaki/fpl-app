@@ -10,19 +10,12 @@ export const metadata = {
   description: "FPL Live Data Tool",
 };
 
-export const viewport = {
-  width: "device-width",
-  initialScale: 0.6,
-  maximumScale: 1,
-  userScalable: true,
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen">
+      <body>
         <Navbar />
-        <main className="flex-grow max-w-10xl mx-auto">{children}</main>
+        {children}
         <Footer />
       </body>
     </html>

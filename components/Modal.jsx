@@ -37,7 +37,7 @@ export function Modal({ isOpen, onClose, children }) {
         {children}
         <button
           onClick={onClose}
-          className="text-2xl mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg"
+          className=" mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg"
         >
           Close
         </button>

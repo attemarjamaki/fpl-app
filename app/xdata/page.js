@@ -40,45 +40,45 @@ const ExpectedData = () => {
 
   if (loading)
     return (
-      <div className="mt-20">
+      <div className="p-20 flex justify-center">
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="mt-4 mb-10 min-w-[600px]">
-      <div className="bg-neutral-700 py-4 rounded-lg mb-4">
-        <h2 className="text-white font-bold text-3xl ml-8">Expected Data</h2>
+    <div className="py-6 md:py-20 px-2 md:px-4 mx-auto max-w-2xl">
+      <div className="bg-neutral-700 py-2 rounded-lg mb-4">
+        <h2 className="text-white font-bold text-lg ml-8">Expected Data</h2>
       </div>
 
-      <div className="overflow-x-auto rounded-lg text-xl">
+      <div className="overflow-x-auto rounded-lg text-xs sm:text-base">
         <table className="table-auto w-full text-left font-semibold">
           <thead>
-            <tr className=" border-b">
-              <th className="py-2 px-4">Name</th>
-              <th className="py-2 px-4">Position</th>
-              <th className="py-2 px-4">Cost</th>
-              <th className="py-2 px-4">Points</th>
-              <th className="py-2 px-4">xG</th>
-              <th className="py-2 px-4">xA</th>
-              <th className="py-2 px-4">xGI</th>
+            <tr className="border-b">
+              <th className="py-2 px-2">Name</th>
+              <th className="py-2 px-2">Position</th>
+              <th className="py-2 px-2">Cost</th>
+              <th className="py-2 px-2">Points</th>
+              <th className="py-2 px-2">xG</th>
+              <th className="py-2 px-2">xA</th>
+              <th className="py-2 px-2">xGI</th>
             </tr>
           </thead>
           <tbody>
             {players.map((player, index) => (
-              <tr key={index} className="border-t text-ce">
-                <td className="py-2 px-4">{player.name}</td>
-                <td className="py-2 px-4">{player.position}</td>
-                <td className="py-2 px-4">£{player.price}</td>
-                <td className="py-2 px-4">{player.totalPoints}</td>
-                <td className="py-2 px-4">
+              <tr key={index} className="border-t">
+                <td className="py-2 px-2">{player.name}</td>
+                <td className="py-2 px-2">{player.position}</td>
+                <td className="py-2 px-2">£{player.price}</td>
+                <td className="py-2 px-2">{player.totalPoints}</td>
+                <td className="py-2 px-2">
                   {Number(player.expectedGoals).toFixed(2)}
                 </td>
-                <td className="py-2 px-4">
+                <td className="py-2 px-2">
                   {Number(player.expectedAssists).toFixed(2)}
                 </td>
-                <td className="py-2 px-4">
+                <td className="py-2 px-2">
                   {Number(player.expectedGoalInvolvements).toFixed(2)}
                 </td>
               </tr>

@@ -62,7 +62,7 @@ const Fixtures = () => {
 
   if (loading)
     return (
-      <div className="mt-20 flex justify-center">
+      <div className="p-20 flex justify-center">
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -78,29 +78,27 @@ const Fixtures = () => {
   };
 
   return (
-    <div className="mt-4 mb-10 min-w-[600px]">
-      <div>
-        <div className="bg-neutral-700 py-4 rounded-lg">
-          <h2 className="text-white font-bold text-3xl ml-8">Bonus Points</h2>
-        </div>
+    <div className="py-6 md:py-20  px-2 md:px-4 mx-auto max-w-2xl">
+      <div className="bg-neutral-700 py-2 rounded-lg">
+        <h2 className="text-white font-bold text-lg ml-8">Bonus Points</h2>
       </div>
       {fixtures.map((fixture, index) => (
         <div key={index}>
           <div key={index} className="flex w-full mt-4 ">
             <div className="flex-1">
               <div className="flex">
-                <p className="text-2xl font-bold my-auto ml-auto">
+                <p className="font-bold my-auto ml-auto">
                   {teamNames[fixture.team_h]}
                 </p>
                 <Image
                   src={getLogoImage(fixture.team_h)}
                   alt={`${fixture.team_h} logo`}
-                  width={52}
-                  height={52}
-                  className="ml-4 !h-[52px]"
+                  width={32}
+                  height={32}
+                  className="ml-2 !h-[32px]"
                 />
               </div>
-              <div className="mt-2 mb-4 text-xl">
+              <div className="mt-2 mb-4">
                 <div>
                   {fixture.own_goals.away.map((ownGoal) => (
                     <div
@@ -114,7 +112,7 @@ const Fixtures = () => {
                         <img
                           src="/images/ball-red.png"
                           alt="own goal"
-                          style={{ width: "28px" }}
+                          style={{ width: "20px" }}
                           className="ml-0.5"
                         />
                       </span>
@@ -133,7 +131,7 @@ const Fixtures = () => {
                                 key={index}
                                 src="/images/ball.png"
                                 alt="goal"
-                                style={{ width: "28px" }}
+                                style={{ width: "20px" }}
                                 className="ml-0.5"
                               />
                             )
@@ -158,7 +156,7 @@ const Fixtures = () => {
                                 key={index}
                                 src="/images/assist.png"
                                 alt="assist"
-                                style={{ width: "28px" }}
+                                style={{ width: "20px" }}
                                 className="ml-0.5"
                               />
                             )
@@ -170,8 +168,8 @@ const Fixtures = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center mx-4">
-              <div className="text-2xl font-bold mt-4">
+            <div className="flex flex-col items-center mx-2">
+              <div className="text-lg font-bold mt-0.5">
                 {fixture.minutes > 0 ? (
                   <p>
                     {fixture.team_h_score} - {fixture.team_a_score}
@@ -192,16 +190,16 @@ const Fixtures = () => {
                 <Image
                   src={getLogoImage(fixture.team_a)}
                   alt={`${fixture.team_a} logo`}
-                  width={52}
-                  height={52}
-                  className="mr-4 !h-[52px]"
+                  width={32}
+                  height={32}
+                  className="mr-2 !h-[32px]"
                 />
-                <p className="text-xl font-bold my-auto">
+                <p className=" font-bold my-auto">
                   {teamNames[fixture.team_a]}
                 </p>
               </div>
 
-              <div className="mt-2 mb-4 text-xl">
+              <div className="mt-2 mb-4">
                 <div>
                   {fixture.own_goals.home.map((ownGoal) => (
                     <div
@@ -212,7 +210,7 @@ const Fixtures = () => {
                         <img
                           src="/images/ball-red.png"
                           alt="own goal"
-                          style={{ width: "28px" }}
+                          style={{ width: "20px" }}
                           className="ml-0.5"
                         />
                       </span>
@@ -231,7 +229,7 @@ const Fixtures = () => {
                             key={index}
                             src="/images/ball.png"
                             alt="goal"
-                            style={{ width: "28px" }}
+                            style={{ width: "20px" }}
                             className="ml-0.5"
                           />
                         ))}
@@ -255,7 +253,7 @@ const Fixtures = () => {
                               key={index}
                               src="/images/assist.png"
                               alt="assist"
-                              style={{ width: "28px" }}
+                              style={{ width: "20px" }}
                               className="ml-0.5"
                             />
                           )
@@ -271,16 +269,16 @@ const Fixtures = () => {
             </div>
           </div>
           <div>
-            <h2 className="py-2 text-2xl font-semibold text-center">Bonus</h2>
+            <h2 className="py-2 text-lg font-semibold text-center">Bonus</h2>
             <div className="flex w-full mt-2 border-b border-neutral-700">
-              <div className="flex-1 mb-4 text-xl font-semibold">
+              <div className="flex-1 mb-4 font-semibold">
                 {fixture.bps.home
                   .map((bonus) => (
                     <div key={bonus.element} className="flex">
                       <p className=" ml-auto mr-2">
                         {getPlayerName(bonus.element)}
                       </p>
-                      <span className="mr-6">
+                      <span className="mr-2">
                         {bonus.value > 1 ? ` (${bonus.value})` : ""}
                       </span>
                     </div>
@@ -290,11 +288,11 @@ const Fixtures = () => {
               <div className="flex flex-col items-center mx-4">
                 <div className="border-l border-neutral-700 h-4/5 my-2"></div>
               </div>
-              <div className="flex-1 mb-4 text-xl font-semibold">
+              <div className="flex-1 mb-4 font-semibold">
                 {fixture.bps.away
                   .map((bonus) => (
                     <p key={bonus.element} className="flex">
-                      <span className="flex ml-6 mr-2">
+                      <span className="flex ml-2 mr-2">
                         {bonus.value > 1 ? ` (${bonus.value})` : ""}
                       </span>
 
