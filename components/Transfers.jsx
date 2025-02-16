@@ -37,21 +37,21 @@ const Transfers = ({ managerData }) => {
 
   return (
     <div className="mb-10">
-      <div className="bg-neutral-700 py-4 rounded-lg">
-        <h2 className="text-white font-bold text-3xl ml-8">Transfers</h2>
+      <div className="bg-neutral-700 py-2 rounded-lg">
+        <h2 className="text-white font-bold text-lg ml-8">Transfers</h2>
       </div>
       {transfers && transfers.length > 0 ? (
         <div className="overflow-x-auto rounded-lg mt-1">
           <table className="table-auto w-full text-left font-semibold">
             <thead>
-              <tr className="border-b text-2xl">
+              <tr className="border-b">
                 <th className="py-2 px-4">Player in</th>
                 <th className="py-2 px-2">Player out</th>
               </tr>
             </thead>
             <tbody>
               {transfers.map((transfer, index) => (
-                <tr key={index} className="border-t text-xl">
+                <tr key={index} className="border-t">
                   <td className="py-2 px-4">
                     {getPlayerName(transfer.element_in)}
                   </td>
@@ -64,7 +64,7 @@ const Transfers = ({ managerData }) => {
           </table>
         </div>
       ) : (
-        <p className="py-2 px-4 text-xl">No transfers Made</p>
+        <p className="py-2 px-4">No transfers Made</p>
       )}
     </div>
   );

@@ -10,14 +10,14 @@ const PlayerCard = ({ player }) => {
       case 3: // Midfielders
         return `row-start-3 col-start-${index + 1}`;
       case 4: // Forwards
-        return `row-start-4 col-start-${index + 2}`; // Adjust based on number of forwards
+        return `row-start-4 col-start-${index + 2}`;
       default:
         return "";
     }
   };
 
   const getShirtImage = (teamId) => {
-    return `/images/shirts/shirt_${teamId}.png`; // Match the naming convention you used
+    return `/images/shirts/shirt_${teamId}.png`;
   };
 
   return (
@@ -28,34 +28,33 @@ const PlayerCard = ({ player }) => {
         player.index
       )} player-card text-center rounded-lg`}
     >
-      <div className="relative bg-black bg-opacity-50 rounded-lg h-34 w-28">
+      <div className="relative bg-black bg-opacity-50 rounded-lg w-16 md:w-20">
         {player.isCaptain && (
-          <span className="absolute top-8 left-1 text-white text-xl font-bold bg-black rounded-full px-2">
+          <span className="absolute top-7 left-1 text-white text-xs font-bold bg-black rounded-full px-1">
             C
           </span>
         )}
         {player.isViceCaptain && (
-          <span className="absolute top-8 left-1 text-white text-xl font-bold bg-black rounded-full px-2">
+          <span className="absolute top-7 left-1 text-white text-xs font-bold bg-black rounded-full px-1">
             V
           </span>
         )}
         <img
-          src={getShirtImage(player.team)} // Dynamically load the image based on team ID
+          src={getShirtImage(player.team)}
           alt={`${player.name} shirt`}
-          className="mx-auto mb-2 pt-2"
-          style={{ width: "55px" }} // Adjust the size as needed
+          className="mx-auto mb-2 pt-2 w-8 md:w-10"
         />
 
-        <div className="absolute bg-black w-full -mt-6">
-          <h4 className="text-lg font-semibold text-white">
+        <div className="absolute bg-black w-full -mt-3">
+          <h4 className="text-xs font-semibold text-white">
             {player.name.slice(0, 10)}
           </h4>
         </div>
         <div className="mt-3">
-          <p className="text-md font-semibold text-white">{player.points}</p>
+          <p className="text-xs font-semibold text-white">{player.points}</p>
         </div>
         <div>
-          <p className=" bg-slate-100 text-md text-black rounded-b-lg">
+          <p className=" bg-slate-100 text-xs text-black rounded-b-lg">
             {player.selectedPercent}%
           </p>
         </div>

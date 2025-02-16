@@ -17,42 +17,43 @@ const ManagerCard = ({ managerData }) => {
     rankChangeImage = "/images/same.png";
   }
   return (
-    <div className="mt-4">
-      <div className="bg-neutral-700 py-4 rounded-lg">
-        <h2 className="text-white font-bold text-3xl ml-8">
+    <div>
+      <div className="bg-neutral-700 py-2 rounded-lg">
+        <h2 className="text-white font-bold text-lg ml-8">
           {managerData.managerName}
         </h2>
-        <h2 className="text-white text-3xl ml-8 mt-1">
+        <h2 className="text-white text-lg ml-8 mt-1">
           GW {managerData.currentGameweek}
         </h2>
       </div>
-      <div className="stats flex w-full">
-        <div className="stat flex-1 text-center flex flex-col items-center justify-center">
-          <div className="stat-title ">Average</div>
-          <div className="stat-value text-2xl">{managerData.averageScore}</div>
-        </div>
-
-        <div className="stat flex-1 text-center flex flex-col items-center justify-center">
-          <div className="stat-title">Points</div>
-          <div className="stat-value text-5xl text-primary">
-            {managerData.livePoints}
+      <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-sm">
+        <div className="grid grid-cols-3 divide-x divide-gray-200">
+          <div className="px-4 py-3 text-center">
+            <div className="text-sm text-gray-600 mb-1">Average</div>
+            <div className="text-lg font-semibold">
+              {managerData.averageScore}
+            </div>
           </div>
-        </div>
-
-        <div className="stat flex-1 text-center flex flex-col items-center justify-center">
-          <div className="stat-title ">Overall Rank</div>
-          <div className="stat-value text-2xl flex">
-            {managerData.overallRank.toLocaleString("en-US")}
-            <span>
-              {" "}
-              <Image
-                src={rankChangeImage}
-                alt={rankChangeIndicator}
-                width={20}
-                height={20}
-                className="mt-1.5 ml-1"
-              />
-            </span>
+          <div className="px-4 py-3 text-center">
+            <div className="text-sm text-gray-600 mb-1">Points</div>
+            <div className="text-2xl font-bold text-blue-500">
+              {managerData.livePoints}
+            </div>
+          </div>
+          <div className="px-4 py-3 text-center">
+            <div className="text-sm text-gray-600 mb-1">Overall Rank</div>
+            <div className="text-lg font-semibold flex items-center justify-center gap-1">
+              {managerData.overallRank.toLocaleString("en-US")}
+              <span>
+                {" "}
+                <Image
+                  src={rankChangeImage}
+                  alt={rankChangeIndicator}
+                  width={12}
+                  height={12}
+                />
+              </span>
+            </div>
           </div>
         </div>
       </div>
