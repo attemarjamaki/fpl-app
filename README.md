@@ -17,4 +17,4 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - **Fixtures and Bonus**: See the Gameweek scores in real-time and what the bps standings are for each game.
 - **Captaincy Picker**: A wheel that will help you choose your captain for the gameweek.
 
-![Expense Tracker Screenshot](./public/images/fpl24com.png)
+![fpl24](./public/images/fpl24com.png)
