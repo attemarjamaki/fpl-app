@@ -1,49 +1,32 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-
-const ExpectedData = () => {
-  const [players, setPlayers] = useState([]);
-  const [teamNames, setTeamNames] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-
-      try {
-        const playerResponse = await axios.get("/api/xdata");
-        const playerData = playerResponse.data;
-        const teamResponse = await axios.get("/api/teams");
-
-        const teamData = teamResponse.data;
-        const sortedPlayers = playerData
-          .sort(
-            (a, b) => b.expectedGoalInvolvements - a.expectedGoalInvolvements
-          )
-          .slice(0, 25);
-
-        setPlayers(sortedPlayers);
-        setTeamNames(teamData);
-      } catch (err) {
-        console.error("Error fetching player or team data:", err);
-        setError("Failed to load data");
-      } finally {
-        setLoading(false);
+async function fetchData() {
+  try {
+    const playerResponse = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/xdata`,
+      {
+        cache: "no-store",
       }
-    };
-
-    fetchData();
-  }, []);
-
-  if (loading)
-    return (
-      <div className="p-20 flex justify-center">
-        <span className="loading loading-spinner loading-lg"></span>
-      </div>
     );
+
+    if (!playerResponse.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    const playerData = await playerResponse.json();
+
+    const sortedPlayers = playerData
+      .sort((a, b) => b.expectedGoalInvolvements - a.expectedGoalInvolvements)
+      .slice(0, 25);
+
+    return { players: sortedPlayers, error: null };
+  } catch (err) {
+    console.error("Error fetching player or team data:", err);
+    return { players: [], teamNames: {}, error: "Failed to load data" };
+  }
+}
+
+export default async function ExpectedData() {
+  const { players, error } = await fetchData();
+
   if (error) return <p>{error}</p>;
 
   return (
@@ -88,6 +71,4 @@ const ExpectedData = () => {
       </div>
     </div>
   );
-};
-
-export default ExpectedData;
+}
