@@ -10,6 +10,7 @@ const Fixtures = () => {
   const [fixtures, setFixtures] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [expandedCards, setExpandedCards] = useState({});
 
   useEffect(() => {
     async function fetchTeamNames() {
@@ -27,9 +28,7 @@ const Fixtures = () => {
 
     async function fetchFixtures() {
       try {
-        const res = await fetch("/api/fixtures", {
-          next: { fetchCache: "force-no-store" },
-        });
+        const res = await fetch("/api/fixtures");
         if (!res.ok) {
           throw new Error("Failed to fetch fixtures");
         }
@@ -77,14 +76,21 @@ const Fixtures = () => {
     return `/images/logos/t_${teamId}.png`;
   };
 
+  const toggleCard = (index) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   return (
     <div className="py-6 md:py-20  px-2 md:px-4 mx-auto max-w-2xl">
       <div className="bg-neutral-700 py-2 rounded-lg">
-        <h2 className="text-white font-bold text-lg ml-8">Bonus Points</h2>
+        <h2 className="text-white font-bold text-lg ml-8">Fixtures</h2>
       </div>
       {fixtures.map((fixture, index) => (
-        <div key={index}>
-          <div key={index} className="flex w-full mt-4 ">
+        <div className="bg-neutral-200 p-4 rounded-xl mt-4" key={index}>
+          <div key={index} className="flex w-full">
             <div className="flex-1">
               <div className="flex">
                 <p className="font-bold my-auto ml-auto">
@@ -268,9 +274,38 @@ const Fixtures = () => {
               </div>
             </div>
           </div>
-          <div>
+          <button
+            onClick={() => toggleCard(index)}
+            className="mx-auto p-2 flex items-center justify-center hover:bg-neutral-300 transition-colors duration-200 rounded-2xl"
+          >
+            <h3 className="text-sm text-center font-semibold text-neutral-900">
+              BPS & DEFCON
+            </h3>
+            <svg
+              className={`w-5 h-5 text-neutral-500 transition-transform duration-200 ${
+                expandedCards[index] ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          <div
+            className={`overflow-hidden transition-all duration-300 ease-in-out ${
+              expandedCards[index]
+                ? "max-h-96 opacity-100"
+                : "max-h-0 opacity-0"
+            }`}
+          >
             <h2 className="py-2 text-lg font-semibold text-center">Bonus</h2>
-            <div className="flex w-full mt-2 border-b border-neutral-700">
+            <div className="flex w-full mt-2">
               <div className="flex-1 mb-4 font-semibold">
                 {fixture.bps.home
                   .map((bonus) => (
@@ -302,6 +337,41 @@ const Fixtures = () => {
                   .slice(0, 5)}
               </div>
             </div>
+            {/**
+             *             <h2 className="py-2 text-lg font-semibold text-center">Defcon</h2>
+            <div className="flex w-full mt-2">
+              <div className="flex-1 mb-4 font-semibold">
+                {fixture.defcon.home
+                  .map((item) => (
+                    <div key={item.element} className="flex">
+                      <p className=" ml-auto mr-2">
+                        {getPlayerName(item.element)}
+                      </p>
+                      <span className="mr-2">
+                        {item.value > 1 ? ` (${item.value})` : ""}
+                      </span>
+                    </div>
+                  ))
+                  .slice(0, 5)}
+              </div>
+              <div className="flex flex-col items-center mx-4">
+                <div className="border-l border-neutral-700 h-4/5 my-2"></div>
+              </div>
+              <div className="flex-1 mb-4 font-semibold">
+                {fixture.defcon.away
+                  .map((item) => (
+                    <p key={item.element} className="flex">
+                      <span className="flex ml-2 mr-2">
+                        {item.value > 1 ? ` (${item.value})` : ""}
+                      </span>
+
+                      {getPlayerName(item.element)}
+                    </p>
+                  ))
+                  .slice(0, 5)}
+              </div>
+            </div>
+             */}
           </div>
         </div>
       ))}

@@ -57,7 +57,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">
           <Link href={"/bonus"}>
             <li>
-              <p className="text-lg font-semibold">Bonus</p>
+              <p className="text-lg font-semibold">Fixtures</p>
             </li>
           </Link>
           <Link href={"/xdata"}>
