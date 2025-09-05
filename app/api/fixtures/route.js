@@ -37,11 +37,11 @@ export async function GET(request) {
         (stat) => stat.identifier === "own_goals"
       );
       const bps = fixture.stats.find((stat) => stat.identifier === "bps");
-      /*
+
       const defcon = fixture.stats.find(
         (stat) => stat.identifier === "defensive_contribution"
       );
-*/
+
       return {
         id: fixture.id,
         kickoff_time: fixture.kickoff_time,
@@ -66,15 +66,22 @@ export async function GET(request) {
           home: bps?.h || [],
           away: bps?.a || [],
         },
-        /*
+
         defcon: {
           home: defcon?.h || [],
           away: defcon?.a || [],
-        },*/
+        },
       };
     });
 
-    return NextResponse.json(fixturesWithKeyStats);
+    return NextResponse.json(fixturesWithKeyStats, {
+      headers: {
+        "Cache-Control":
+          "no-store, no-cache, must-revalidate, proxy-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    });
   } catch (error) {
     console.error("Unexpected error:", error);
     return NextResponse.json(

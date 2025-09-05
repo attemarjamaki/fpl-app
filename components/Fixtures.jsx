@@ -337,8 +337,7 @@ const Fixtures = () => {
                   .slice(0, 5)}
               </div>
             </div>
-            {/**
-             *             <h2 className="py-2 text-lg font-semibold text-center">Defcon</h2>
+            <h2 className="py-2 text-lg font-semibold text-center">Defcon</h2>
             <div className="flex w-full mt-2">
               <div className="flex-1 mb-4 font-semibold">
                 {fixture.defcon.home
@@ -371,7 +370,6 @@ const Fixtures = () => {
                   .slice(0, 5)}
               </div>
             </div>
-             */}
           </div>
         </div>
       ))}
